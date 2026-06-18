@@ -2,8 +2,10 @@
  * API Client wrapper for communicating with the backend Express server.
  */
 
+const API_BASE = import.meta.env.DEV ? '' : '/_/backend';
+
 export async function fetchProblemStatements() {
-  const response = await fetch('/api/problem-statements');
+  const response = await fetch(`${API_BASE}/api/problem-statements`);
   if (!response.ok) {
     throw new Error('Failed to fetch problem statements');
   }
@@ -11,7 +13,7 @@ export async function fetchProblemStatements() {
 }
 
 export async function updateProblemStatement(id, updatedFields) {
-  const response = await fetch(`/api/problem-statements/${id}`, {
+  const response = await fetch(`${API_BASE}/api/problem-statements/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +27,7 @@ export async function updateProblemStatement(id, updatedFields) {
 }
 
 export async function fetchTeamMembers() {
-  const response = await fetch('/api/team-members');
+  const response = await fetch(`${API_BASE}/api/team-members`);
   if (!response.ok) {
     throw new Error('Failed to fetch team members');
   }
@@ -33,7 +35,7 @@ export async function fetchTeamMembers() {
 }
 
 export async function updateTeamMembers(members) {
-  const response = await fetch('/api/team-members', {
+  const response = await fetch(`${API_BASE}/api/team-members`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -47,7 +49,7 @@ export async function updateTeamMembers(members) {
 }
 
 export async function resetDatabase() {
-  const response = await fetch('/api/reset', {
+  const response = await fetch(`${API_BASE}/api/reset`, {
     method: 'POST',
   });
   if (!response.ok) {
