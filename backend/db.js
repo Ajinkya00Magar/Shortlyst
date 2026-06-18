@@ -1,6 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import path from 'node:path';
 import fs from 'node:fs';
+import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -8,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Ensure database directory exists
 const isVercel = process.env.VERCEL === '1';
-const dbDir = isVercel ? '/tmp' : path.join(__dirname, '..', 'database');
+const dbDir = isVercel ? os.tmpdir() : path.join(__dirname, '..', 'database');
 if (!fs.existsSync(dbDir)) {
   fs.mkdirSync(dbDir, { recursive: true });
 }

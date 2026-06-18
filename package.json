@@ -2,6 +2,7 @@
   "name": "isro-hackathon-evaluation-platform-root",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "postinstall": "npm run install:frontend && npm run install:backend",
     "install:frontend": "npm install --prefix frontend",
