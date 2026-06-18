@@ -2,7 +2,7 @@
  * API Client wrapper for communicating with the backend Express server.
  */
 
-const API_BASE = '';
+const API_BASE = '/_/backend';
 
 export async function fetchProblemStatements() {
   const response = await fetch(`${API_BASE}/api/problem-statements`);
